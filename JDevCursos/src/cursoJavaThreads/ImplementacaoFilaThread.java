@@ -16,8 +16,14 @@ public class ImplementacaoFilaThread extends Thread {
 	
 	@Override
 	public void run() {
-		Iterator iterator = pilha_filha.iterator();
 		
+		System.out.println("fila rodando");
+		
+		
+		
+		while(true) {
+		
+		Iterator iterator = pilha_filha.iterator();
 		
 		synchronized (iterator) { // bloqueia acesso a esta lista por outros processos
 			while (iterator.hasNext()) { // enquanto tive dados na lista continua processando
@@ -29,10 +35,6 @@ public class ImplementacaoFilaThread extends Thread {
 			System.out.println(processar.getNome());
 			System.out.println(processar.getEmail());
 			
-			
-			
-				
-				
 			iterator.remove();
 			
 			try {
@@ -42,18 +44,22 @@ public class ImplementacaoFilaThread extends Thread {
 				e.printStackTrace();
 			}
 			
+			
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) { // depois de processar toda lista irá dar um tempo para limpar a mémoria
 				e.printStackTrace();
 			}
+			
+			}
 				
+			}
+			
+			
 			}
 			
 		}
 		
 		
-		
-	}
+		}
 	
-}
